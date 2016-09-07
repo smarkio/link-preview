@@ -1,9 +1,9 @@
 {
-    "name": "kasp3r/link-preview",
+    "name": "smarkio/link-preview",
     "type": "library",
     "description": "Link preview library for PHP",
     "keywords": ["php","url","scraping"],
-    "homepage": "http://github.com/kasp3r/link-preview",
+    "homepage": "http://github.com/smarkio/link-preview",
     "license": "MIT",
     "authors": [
         {
