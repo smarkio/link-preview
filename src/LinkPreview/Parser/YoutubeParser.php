@@ -116,7 +116,8 @@ class YoutubeParser implements ParserInterface
     {
         $this->readLink();
         $link = $this->getLink();
-        $htmlData = $this->parseHtml($link->getContent());
+        $content = strcasecmp($link->getCharset(), 'utf-8') == 0 ? utf8_decode($link->getContent()) : $link->getContent();
+        $htmlData = $this->parseHtml($content);
 
         $link->setTitle($htmlData['title'])
             ->setDescription($htmlData['description'])
@@ -143,7 +144,7 @@ class YoutubeParser implements ParserInterface
 
         libxml_use_internal_errors(true);
         $doc = new \DOMDocument();
-        $doc->loadHTML(utf8_decode($html));
+        $doc->loadHTML($html);
 
         /** @var \DOMElement $meta */
         foreach ($doc->getElementsByTagName('meta') as $meta) {

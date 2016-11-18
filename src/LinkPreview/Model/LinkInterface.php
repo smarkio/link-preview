@@ -8,6 +8,12 @@ namespace LinkPreview\Model;
 interface LinkInterface
 {
     /**
+     * Get character set
+     * @return string
+     */
+    public function getCharset();
+
+    /**
      * Get source code
      * @return string
      */
@@ -54,6 +60,13 @@ interface LinkInterface
      * @return string
      */
     public function getUrl();
+
+    /**
+     * Set character set
+     * @param string $charset
+     * @return $this
+     */
+    public function setCharset($charset);
 
     /**
      * Set source code
