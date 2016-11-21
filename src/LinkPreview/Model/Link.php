@@ -8,6 +8,10 @@ namespace LinkPreview\Model;
 class Link implements LinkInterface
 {
     /**
+     * @var string $charset Website encoding
+     */
+    private $charset;
+    /**
      * @var string $content Website content
      */
     private $content;
@@ -48,6 +52,24 @@ class Link implements LinkInterface
         if (null !== $url) {
             $this->setUrl($url);
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getCharset()
+    {
+        return $this->charset;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setCharset($charset)
+    {
+        $this->charset = strtolower($charset);
+        
+        return $this;
     }
 
     /**

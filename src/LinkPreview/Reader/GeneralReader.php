@@ -78,13 +78,21 @@ class GeneralReader implements ReaderInterface
         );
 
         $headerContentType = $response->getHeader('content-type');
+        
         $contentType = '';
+        $charset = 'ISO-8859-1';
         if (is_array($headerContentType) && count($headerContentType) > 0) {
-            $contentType = current(explode(';', current($headerContentType)));
+            $headerContentTypes = explode(';', current($headerContentType));
+            $contentType = current($headerContentTypes);
+            if (count($headerContentTypes)>1 && preg_match("/charset=/",$headerContentTypes[1]))
+            {
+                $charset = explode('=', end($headerContentTypes))[1];
+            }
         }
 
         $link->setContent((string)$response->getBody())
             ->setContentType($contentType)
+            ->setCharset($charset)
             ->setRealUrl($effectiveUrl);
 
         return $link;
