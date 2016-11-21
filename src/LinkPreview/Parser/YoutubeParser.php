@@ -116,7 +116,7 @@ class YoutubeParser implements ParserInterface
     {
         $this->readLink();
         $link = $this->getLink();
-        $content = strcasecmp($link->getCharset(), 'utf-8') == 0 ? utf8_decode($link->getContent()) : $link->getContent();
+        $content = $link->getCharset() == 'utf-8' ? utf8_decode($link->getContent()) : $link->getContent();
         $htmlData = $this->parseHtml($content);
 
         $link->setTitle($htmlData['title'])

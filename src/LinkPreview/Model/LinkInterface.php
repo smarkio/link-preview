@@ -62,7 +62,7 @@ interface LinkInterface
     public function getUrl();
 
     /**
-     * Set character set
+     * Set character set. Converted to lower case string
      * @param string $charset
      * @return $this
      */

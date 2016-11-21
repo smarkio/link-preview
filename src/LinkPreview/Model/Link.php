@@ -67,7 +67,7 @@ class Link implements LinkInterface
      */
     public function setCharset($charset)
     {
-        $this->charset = $charset;
+        $this->charset = strtolower($charset);
         
         return $this;
     }
